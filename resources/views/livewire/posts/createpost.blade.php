@@ -26,7 +26,7 @@ new class extends Component {
         <x-textarea wire:model='entry_content' label="Content" />
         <div class="pt-4">
             <x-button light negative href="{{ route('dashboard') }}">Cancel</x-button>
-            <x-button right-icon="arrow-right" wire:click='submit' spinner>Submit</x-button>
+            <x-button right-icon="arrow-right" type="submit" spinner>Submit</x-button>
         </div>
         <x-errors />
     </form>

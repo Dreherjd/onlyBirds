@@ -19,6 +19,8 @@ Volt::route('posts/{post}/edit', 'posts.edit-post')
     ->middleware(['auth'])
     ->name('post.edit');
 
+Volt::route('posts/{post}/view', 'posts.view-post')->name('post.view');
+
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
 
