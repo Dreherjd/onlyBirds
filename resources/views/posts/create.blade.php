@@ -3,5 +3,6 @@
         <div class="grid auto-rows-min gap-4 md:grid-cols-3">
             <h1 class="text-4xl">Create a post</h1>
         </div>
+        <livewire:posts.createpost />
     </div>
 </x-layouts.app>
