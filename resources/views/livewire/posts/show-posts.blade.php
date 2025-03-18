@@ -44,12 +44,14 @@ new class extends Component {
                 <x-slot name="slot">
                     <p>{{ Str::limit($post->entry_content, 400) }}</p>
                     <br />
-                    <p class="text-xs">Written: {{ \Carbon\Carbon::parse($post->created_at)->format('M-d-Y') }} by
-                        {{ $post->user->name }}</p>
+                    <p class="text-xs">{{ $post->user->name }} - {{ $post->created_at->diffForHumans() }}
+                    </p>
                 </x-slot>
                 <x-slot name="footer" class="flex items-center justify-between">
                     <div>
-                        <x-button wire:click="delete('{{ $post->id }}')" label="Delete" light negative />
+                        @if ($post->user->id === auth()->user()->id)
+                            <x-button wire:click="delete('{{ $post->id }}')" label="Delete" light negative />
+                        @endif
                         <x-button href="{{ route('post.view', $post) }}" label="View" primary />
                     </div>
                     <div class="flex justify-between">
