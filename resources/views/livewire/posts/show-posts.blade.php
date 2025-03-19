@@ -1,10 +1,12 @@
 <?php
 
 use Livewire\Volt\Component;
+use Livewire\WithPagination;
 use App\Models\Post;
 use App\Models\Comment;
 
 new class extends Component {
+    use withPagination;
     public Post $post;
     public $like_count;
 
@@ -22,7 +24,7 @@ new class extends Component {
     public function with(): array
     {
         return [
-            'posts' => Post::orderBy('created_at', 'desc')->get(),
+            'posts' => Post::paginate(10),
         ];
     }
 
@@ -67,5 +69,6 @@ new class extends Component {
                 </x-slot>
             </x-card>
         @endforeach
+        {{ $posts->links() }}
     </div>
 </div>
